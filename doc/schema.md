@@ -17,7 +17,6 @@ let body_field = schema_builder.add_text_field("body", TEXT);
 let schema = schema_builder.build();
 ```
 
-
 [On integer types in Rust](https://medium.com/@marcinbaraniecki/on-integer-types-in-rust-b3dc1b0a23d3) shows why for Hackernews ID's we want to use
 
 ```
@@ -25,3 +24,6 @@ pub fn add_u64_field
 ```
 
 Unsigned integer types are those, that cannot hold negative values. Simply put — they cannot go below zero (think of unsigned as those, that can’t have a minus sign in front), and zero is exactly what is returned by their min_value() method..
+
+In the examples see **integer_range_search** to see how a **u64_field** gets
+indexed.  This is relevant when indexing the hackernews ID in tantivy.

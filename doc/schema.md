@@ -27,3 +27,32 @@ Unsigned integer types are those, that cannot hold negative values. Simply put â
 
 In the examples see **integer_range_search** to see how a **u64_field** gets
 indexed.  This is relevant when indexing the hackernews ID in tantivy.
+
+Parsing Json Documents
+
+If you have a json document that you are trying to parse...
+For example from Hackernews there is a **by** field in the json.
+If you don't have the **by** field in the schema...
+
+You will get a
+[DocParsingError](https://docs.rs/tantivy/0.11.1/tantivy/schema/enum.DocParsingError.html)
+**NoSuchFieldInSchema**
+from the method
+[parse_document](https://docs.rs/tantivy/0.11.1/tantivy/schema/struct.Schema.html#method.parse_document)
+
+Bottom line here is for now the JSON that you are parsing has to align
+up with the Schema that you define...
+
+If you want to have a shorter schema with just the {id, score, title}
+then the corresponding JSON documents you parse can only have those
+fields as well...
+
+For this reason: we need to have a program that reads the schema file
+first and based on this schema only pull the fields from the json that
+correspond with those fields in the schema prior to calling **parse_document** on
+the JSON that got read...
+
+Solution:
+* Read a channel of json lines
+* Build a new JSON based on the schema fields
+* Write this reduced JSON to a new channel

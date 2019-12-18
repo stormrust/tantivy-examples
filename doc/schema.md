@@ -28,7 +28,7 @@ Unsigned integer types are those, that cannot hold negative values. Simply put â
 In the examples see **integer_range_search** to see how a **u64_field** gets
 indexed.  This is relevant when indexing the hackernews ID in tantivy.
 
-Parsing Json Documents
+### Parsing Json Documents
 
 If you have a json document that you are trying to parse...
 For example from Hackernews there is a **by** field in the json.

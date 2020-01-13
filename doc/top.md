@@ -1,6 +1,14 @@
 
-Core coding lingua franca
+#### number of threads = number of segments
 
+There is a one to one correspondence between the number of threads
+and the number of segments.
+
+The exact relationship is defined in
+core/index.rs
+pub fn writer
+
+Core coding lingua franca
 
 * schema_builder.add_text_field("title", TEXT | STORED);
 * index_writer.add_document
